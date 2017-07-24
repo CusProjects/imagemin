@@ -1,14 +1,15 @@
 'use strict';
-const fs = require('fs');
-const path = require('path');
-const fileType = require('file-type');
-const globby = require('globby');
-const makeDir = require('make-dir');
-const pify = require('pify');
-const pPipe = require('p-pipe');
-const replaceExt = require('replace-ext');
+import fs from 'fs';
+import path from 'path';
+import fileType from 'file-type';
+import globby from 'globby';
+import makeDir from 'make-dir';
+import pify from 'pify';
+import pPipe from 'p-pipe';
+import replaceExt from 'replace-ext';
 
-const fsP = pify(fs);
+const fsp = pify(fs);
+
 
 const handleFile = (input, output, opts) => fsP.readFile(input).then(data => {
 	const dest = output ? path.join(output, path.basename(input)) : null;
